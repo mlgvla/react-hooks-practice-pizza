@@ -1,7 +1,10 @@
-import React from "react";
-import Pizza from "./Pizza";
+import React from "react"
+import Pizza from "./Pizza"
 
-function PizzaList() {
+function PizzaList({ pizzas, onSelectPizza }) {
+  const pizzaList = pizzas.map(pizza => (
+    <Pizza key={pizza.id} pizza={pizza} onSelectPizza={onSelectPizza} />
+  ))
   return (
     <table className="table table-striped">
       <thead>
@@ -12,13 +15,9 @@ function PizzaList() {
           <th scope="col">Edit</th>
         </tr>
       </thead>
-      <tbody>
-        {
-          //render Pizza here
-        }
-      </tbody>
+      <tbody>{pizzaList}</tbody>
     </table>
-  );
+  )
 }
 
-export default PizzaList;
+export default PizzaList
